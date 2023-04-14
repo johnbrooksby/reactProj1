@@ -51,3 +51,7 @@ button:hover {
 button:active {
   scale:.9;
 }
+
+h3 {
+  color: white;
+}

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 import Square from "./Square";
 
+let xcount = 0;
+let ocount = 0;
+
 function App() {
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState(true);
@@ -10,6 +13,7 @@ function App() {
     setSquares(["", "", "", "", "", "", "", "", ""]);
     setPlayer(true);
   };
+  
 
   const calculateWinner = (Arr) => {
     let lines = [
@@ -27,7 +31,8 @@ function App() {
       const [a, b, c] = lines[i];
 
       if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c]) {
-        return `${Arr[a]} won!`;
+        Arr[a] === "X" ? xcount++ : ocount++
+        return `${Arr[a]} wins!`;
       }
     }
     if (
@@ -64,7 +69,13 @@ function App() {
       </div>
       <span>{calculateWinner(squares)}</span>
       <br />
-      <button onClick={resetHandler}>Reset</button>
+      <button onClick={resetHandler}>Reset Grid</button>
+      <h3>X Wins: {xcount/2} --- O Wins: {ocount/2}</h3>
+      <button onClick={() => {
+        xcount = 0;
+        ocount = 0;
+        resetHandler();
+      }}>Reset Wins</button>
     </div>
   );
 }
