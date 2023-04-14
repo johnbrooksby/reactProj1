@@ -4,6 +4,7 @@ import Square from "./Square";
 
 let xcount = 0;
 let ocount = 0;
+let gameOver = false;
 
 function App() {
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
@@ -12,8 +13,8 @@ function App() {
   const resetHandler = () => {
     setSquares(["", "", "", "", "", "", "", "", ""]);
     setPlayer(true);
+    gameOver = false;
   };
-  
 
   const calculateWinner = (Arr) => {
     let lines = [
@@ -31,25 +32,24 @@ function App() {
       const [a, b, c] = lines[i];
 
       if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c]) {
-        Arr[a] === "X" ? xcount++ : ocount++
-        return `${Arr[a]} wins!`;
+        if (Arr[a] === "X") {
+          xcount++;
+          gameOver = true
+          return "X Wins!";
+        } else if (Arr[a] === "O") {
+          ocount++;
+          gameOver = true
+          return "O Wins!";
+        }
       }
     }
-    if (
-      !Arr[0] ||
-      !Arr[1] ||
-      !Arr[2] ||
-      !Arr[3] ||
-      !Arr[4] ||
-      !Arr[5] ||
-      !Arr[6] ||
-      !Arr[7] ||
-      !Arr[8]
-    ) {
-      return "Who will win?";
-    }
-    return "Cat's game";
-  };
+    if (squares.includes("")){      
+        console.log("Gameover:",gameOver)
+        return "Who will win?";
+      }
+      gameOver = false;
+      return "Cat's Game";
+    };
 
   return (
     <div className="App">
@@ -57,12 +57,14 @@ function App() {
         {squares.map((value, index) => {
           return (
             <Square
+              key={index}
               setSquares={setSquares}
               index={index}
               squareValue={value}
               squares={squares}
               player={player}
               setPlayer={setPlayer}
+              winner={gameOver}
             />
           );
         })}
@@ -70,12 +72,18 @@ function App() {
       <span>{calculateWinner(squares)}</span>
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
-      <h3>X Wins: {xcount/2} --- O Wins: {ocount/2}</h3>
-      <button onClick={() => {
-        xcount = 0;
-        ocount = 0;
-        resetHandler();
-      }}>Reset Wins</button>
+      <h3>
+        X Wins: {xcount / 2} --- O Wins: {ocount / 2}
+      </h3>
+      <button
+        onClick={() => {
+          xcount = 0;
+          ocount = 0;
+          resetHandler();
+        }}
+      >
+        Reset Wins
+      </button>
     </div>
   );
 }

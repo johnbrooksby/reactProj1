@@ -31,7 +31,7 @@ img {
   justify-content: center;
   align-content: center;
   width: 100%;
-  padding: 0.5em;
+  /* padding: 0.5em; */
   padding-top: 50px;
   gap: 1em;
   grid-template-rows: 70px 70px 70px;
