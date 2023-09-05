@@ -70,15 +70,15 @@ function App() {
           );
         })}
       </div>
-      <span>{calculateWinner(squares)}</span>
+      <span className="calcWinner">{calculateWinner(squares)}</span>
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
         {/* Deployment settings */}
         X Wins: {xcount} --- O Wins: {ocount} 
-        
+
         {/* Development settings */}
-        {/* X Wins: {xcount / 2} --- O Wins: {ocount / 2} */} //
+        {/* X Wins: {xcount / 2} --- O Wins: {ocount / 2} */}
       </h3>
       <button
         onClick={() => {

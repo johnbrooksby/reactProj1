@@ -35,12 +35,14 @@ img {
   padding-top: 50px;
   gap: 1em;
   grid-template-rows: 70px 70px 70px;
+  margin-bottom: 20px;
 }
 
 button {
   margin-top: 17px;
   padding-left: 15px;
   padding-right: 15px;
+  margin-top: 0px;
 }
 
 button:hover {
@@ -50,8 +52,10 @@ button:hover {
 
 button:active {
   scale:.9;
+  
 }
 
 h3 {
   color: white;
+  margin-bottom: 5px;
 }
