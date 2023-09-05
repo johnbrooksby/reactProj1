@@ -70,7 +70,7 @@ function App() {
           );
         })}
       </div>
-      <span className="calcWinner">{calculateWinner(squares)}</span>
+      <span>{calculateWinner(squares)}</span>
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
