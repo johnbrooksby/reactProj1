@@ -16,7 +16,7 @@ img {
 }
 
 .square {
-  color: white;
+  color:rgb(223, 237, 248);
   display: flex;
   align-items: center;
   justify-content: center;

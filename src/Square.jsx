@@ -16,7 +16,12 @@ const Square = (props) => {
         }
     // }
   };
-  return <div className="square" onClick={handleClick}>{props.squareValue === "O" ? <img src="https://cdn.discordapp.com/attachments/830137099042816080/984895322184634448/devcircle_1.png" alt="devmountain logo"/> : props.squareValue}</div>;
+
+  // No logo for "O"
+  return <div className="square" onClick={handleClick}>{props.squareValue}</div>;
+
+  // Devmountain Logo
+  // return <div className="square" onClick={handleClick}>{props.squareValue === "O" ? <img src="https://cdn.discordapp.com/attachments/830137099042816080/984895322184634448/devcircle_1.png" alt="devmountain logo"/> : props.squareValue}</div>;
 };
 
 export default Square;
