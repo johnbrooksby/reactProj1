@@ -9,6 +9,7 @@ let gameOver = false;
 function App() {
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState(true);
+  // const [xcount, setXcount] = useState(0)
 
   const resetHandler = () => {
     setSquares(["", "", "", "", "", "", "", "", ""]);
@@ -28,6 +29,7 @@ function App() {
       [2, 4, 6],
     ];
 
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
 
@@ -43,8 +45,7 @@ function App() {
         }
       }
     }
-    if (squares.includes("")){      
-        console.log("Gameover:",gameOver)
+    if (squares.includes("")){
         return "Who will win?";
       }
       gameOver = false;
@@ -73,7 +74,11 @@ function App() {
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
-        X Wins: {xcount / 2} --- O Wins: {ocount / 2}
+        {/* Deployment settings */}
+        X Wins: {xcount} --- O Wins: {ocount} 
+        
+        {/* Development settings */}
+        {/* X Wins: {xcount / 2} --- O Wins: {ocount / 2} */} //
       </h3>
       <button
         onClick={() => {

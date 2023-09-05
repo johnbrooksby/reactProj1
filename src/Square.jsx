@@ -2,7 +2,7 @@ import React from "react";
 
 const Square = (props) => {
   const handleClick = () => {
-    console.log("Square", props.winner)
+    // console.log("Square", props.winner)
         if (!props.squareValue) {
             if (props.player && !props.winner) {
                 props.squares.splice(props.index, 1, "X");
