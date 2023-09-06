@@ -32,7 +32,7 @@ function App() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
 
-      if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c]) {
+      if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c] && gameOver === false) {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true
