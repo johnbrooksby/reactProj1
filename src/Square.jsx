@@ -1,16 +1,17 @@
 import React from "react";
 
+// let gameOver
+
 const Square = (props) => {
   const handleClick = () => {
-    if (props.gameOver) {
-      return;
-    } else {
+    
+      console.log("No Winner", props.gameOver);
       if (!props.squareValue) {
-        if (props.player) {
+        if (props.player && props.gameOver === false) {
           props.squares.splice(props.index, 1, "X");
           props.setSquares(props.squares);
           props.setPlayer(!props.player);
-        } else if (!props.player) {
+        } else if (!props.player && props.gameOver === false) {
           props.squares.splice(props.index, 1, "O");
           props.setSquares(props.squares);
           props.setPlayer(!props.player);
@@ -18,7 +19,6 @@ const Square = (props) => {
       } else {
         return;
       }
-    }
   };
 
   // No logo for "O"
