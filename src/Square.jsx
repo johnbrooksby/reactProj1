@@ -3,12 +3,12 @@ import React from "react";
 const Square = (props) => {
   const handleClick = () => {
     // console.log("Square", props.winner)
-        if (!props.squareValue) {
-            if (props.player && !props.winner) {
+        if (!props.squareValue && !props.winner) {
+            if (props.player) {
                 props.squares.splice(props.index, 1, "X");
                 props.setSquares(props.squares);
                 props.setPlayer(!props.player);
-            } else if (!props.player && !props.winner) {
+            } else if (!props.player) {
                 props.squares.splice(props.index, 1, "O");
                 props.setSquares(props.squares);
                 props.setPlayer(!props.player);
