@@ -81,11 +81,7 @@ function App() {
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
-        {/* Deployment settings */}
         X Wins: {xcount} --- O Wins: {ocount} 
-
-        {/* Development settings */}
-        {/* X Wins: {xcount / 4} --- O Wins: {ocount / 4} */}
       </h3>
       <button
         onClick={() => {
