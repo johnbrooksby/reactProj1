@@ -9,7 +9,6 @@ let gameOver = false;
 function App() {
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState(true);
-  // const [xcount, setXcount] = useState(0)
 
   const resetHandler = () => {
     setSquares(["", "", "", "", "", "", "", "", ""]);
@@ -37,11 +36,18 @@ function App() {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true
-          return "X Wins!";
+          console.log(gameOver)
+          setTimeout(() => {
+            return "X Wins!";
+          }, 100);
         } else if (Arr[a] === "O") {
           ocount++;
           gameOver = true
-          return "O Wins!";
+          console.log(gameOver)
+          // setTimeout(() => {
+          //   return "O Wins!";
+          // }, 100);
+          return "O wins"
         }
       }
     }
