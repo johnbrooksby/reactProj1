@@ -36,12 +36,10 @@ function App() {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true
-          console.log(gameOver)
           return "X Wins!";
         } else if (Arr[a] === "O") {
           ocount++;
           gameOver = true
-          console.log(gameOver)
           return "O Wins"
         }
       }
@@ -58,7 +56,7 @@ function App() {
       <div className="container">
         {squares.map((value, index) => {
           return (
-            <Square
+           <Square
               key={index}
               setSquares={setSquares}
               index={index}
@@ -66,7 +64,7 @@ function App() {
               squares={squares}
               player={player}
               setPlayer={setPlayer}
-              winner={gameOver}
+              gameOver={gameOver}
             />
           );
         })}
