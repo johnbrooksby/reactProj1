@@ -32,21 +32,16 @@ function App() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
 
-      if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c] && gameOver === false) {
+      if (Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c]) {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true
           console.log(gameOver)
-          setTimeout(() => {
-            return "X Wins!";
-          }, 100);
+          return "X Wins!";
         } else if (Arr[a] === "O") {
           ocount++;
           gameOver = true
           console.log(gameOver)
-          // setTimeout(() => {
-          //   return "O Wins!";
-          // }, 100);
           return "O wins"
         }
       }
