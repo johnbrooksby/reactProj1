@@ -4,13 +4,13 @@ import React from "react";
 
 const Square = (props) => {
   const handleClick = () => {
-      if (!props.squareValue) {
-        if (props.player && props.gameOver === false) {
+      if (!props.squareValue && props.gameOver === false) {
+        if (props.player) {
           props.squares.splice(props.index, 1, "X");
           props.setSquares(props.squares);
           props.setPlayer(!props.player);
           props.calculateWinner(props.squares)
-        } else if (!props.player && props.gameOver === false) {
+        } else if (!props.player) {
           props.squares.splice(props.index, 1, "O");
           props.setSquares(props.squares);
           props.setPlayer(!props.player);

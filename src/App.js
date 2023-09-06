@@ -5,10 +5,13 @@ import Square from "./Square";
 let xcount = 0;
 let ocount = 0;
 let gameOver = false;
+let msg = 0
 
 function App() {
   const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
   const [player, setPlayer] = useState(true);
+
+  const winner = ["Who Will Win", "X Wins", "O Wins", "Cat's Game"]
 
   const resetHandler = () => {
     setSquares(["", "", "", "", "", "", "", "", ""]);
@@ -36,19 +39,23 @@ function App() {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true
-          return "X Wins!";
+          msg = 1;
+          return
         } else if (Arr[a] === "O") {
           ocount++;
           gameOver = true
-          return "O Wins"
+          msg = 2
+          return
         }
       }
     }
     if (squares.includes("")){
-        return "Who will win?";
+        msg = 0;
+        return
       }
       gameOver = false;
-      return "Cat's Game";
+      msg = 3;
+      return
     };
 
   return (
@@ -70,15 +77,15 @@ function App() {
           );
         })}
       </div>
-      <span>{calculateWinner(squares)}</span>
+      <span>{winner[msg]}</span>
       <br />
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
         {/* Deployment settings */}
-        X Wins: {xcount / 2} --- O Wins: {ocount / 2} 
+        X Wins: {xcount} --- O Wins: {ocount} 
 
         {/* Development settings */}
-        {/* X Wins: {xcount / 2} --- O Wins: {ocount / 2} */}
+        {/* X Wins: {xcount / 4} --- O Wins: {ocount / 4} */}
       </h3>
       <button
         onClick={() => {
