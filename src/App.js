@@ -42,7 +42,7 @@ function App() {
           ocount++;
           gameOver = true
           console.log(gameOver)
-          return "O wins"
+          return "O Wins"
         }
       }
     }
