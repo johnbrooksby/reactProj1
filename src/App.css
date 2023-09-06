@@ -42,8 +42,9 @@ button {
   margin-top: 17px;
   padding-left: 15px;
   padding-right: 15px;
+  height: 30px;
   margin-top: 5px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #61dafb;
 }
 
