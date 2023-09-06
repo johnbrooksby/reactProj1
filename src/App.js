@@ -65,6 +65,7 @@ function App() {
               player={player}
               setPlayer={setPlayer}
               gameOver={gameOver}
+              calculateWinner={calculateWinner}
             />
           );
         })}
@@ -74,7 +75,7 @@ function App() {
       <button onClick={resetHandler}>Reset Grid</button>
       <h3>
         {/* Deployment settings */}
-        X Wins: {xcount} --- O Wins: {ocount} 
+        X Wins: {xcount / 3} --- O Wins: {ocount / 3} 
 
         {/* Development settings */}
         {/* X Wins: {xcount / 2} --- O Wins: {ocount / 2} */}
