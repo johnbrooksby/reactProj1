@@ -32,10 +32,15 @@ img {
   justify-content: center;
   align-content: center;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 25px;
   gap: 1em;
   grid-template-rows: 70px 70px 70px;
   margin-bottom: 20px;
+}
+
+.fourGrid {
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: 70px 70px 70px 70px;
 }
 
 button {
@@ -46,6 +51,9 @@ button {
   margin-top: 5px;
   border-radius: 15px;
   background-color: #61dafb;
+}
+.gridBtn {
+  margin-top: 25px;
 }
 
 button:hover {
