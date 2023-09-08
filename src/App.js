@@ -6,19 +6,18 @@ let xcount = 0;
 let ocount = 0;
 let gameOver = false;
 let msg = 0;
+let fourByFour = false;
 
 function App() {
-  const [fourByFour, setFourByFour] = useState(false);
   const [player, setPlayer] = useState(true);
-  const [refresh, setRefresh] = useState(true)
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [grid, setGrid] = useState("4x4");
 
-  const winner = [player ? "X's Turn" : "O's Turn", "X Wins", "O Wins", "Cat's Game"];
+  const winner = [player ? "X's turn" : "O's turn", "X Wins", "O Wins", "Cat's Game"];
   
   const setFour = () => {
-    setFourByFour(!fourByFour);
-    resetHandler();
+    fourByFour = !fourByFour;
+    resetHandler()
     setGrid(!fourByFour ? "3x3" : "4x4");
   };
 
@@ -26,8 +25,6 @@ function App() {
     setSquares(Array(!fourByFour ? 9 : 16).fill(""));
     setPlayer(true);
     gameOver = false;
-    setRefresh(!refresh)
-    // console.log("refresh", refresh)
   };  
 
   const calculateWinner = (Arr) => {
@@ -54,8 +51,6 @@ function App() {
           [0, 5, 10, 15],
           [3, 6, 9, 12],
         ];
-
-    // console.log(lines);
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c, d] = lines[i];
@@ -92,9 +87,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <button className="gridBtn" onClick={setFour}>
+      <button className="gridBtn" onClick={setFour}>
         Play on {grid} Grid
-      </button> */}
+      </button>
       <div className={fourByFour ? "container fourGrid" : "container"}>
         {squares.map((value, index) => {
           return (
@@ -108,7 +103,6 @@ function App() {
               setPlayer={setPlayer}
               gameOver={gameOver}
               calculateWinner={calculateWinner}
-              refresh={refresh}
             />
           );
         })}
