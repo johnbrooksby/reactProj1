@@ -9,31 +9,26 @@ let msg = 0;
 
 function App() {
   const [fourByFour, setFourByFour] = useState(false);
-  const [squares, setSquares] = useState(new Array(9).fill(""));
   const [player, setPlayer] = useState(true);
-  const [grid, setGrid] = useState("4x4")
+  const [refresh, setRefresh] = useState(true)
+  const [squares, setSquares] = useState(new Array(9).fill(""));
+  const [grid, setGrid] = useState("4x4");
 
-  const winner = ["Who Will Win", "X Wins", "O Wins", "Cat's Game"];
-
-  const resetHandler = () => {
-    setSquares(
-      new Array(!fourByFour ? 9 : 16).fill("")
-    );
-    setPlayer(true);
-    gameOver = false;
-  };
-  
-  const setThree = () => {
-    setFourByFour(!fourByFour)
-    resetHandler()
-    setGrid("4x4")
-  }
+  const winner = [player ? "X's Turn" : "O's Turn", "X Wins", "O Wins", "Cat's Game"];
   
   const setFour = () => {
-    setFourByFour(!fourByFour)
-    resetHandler()
-    setGrid("3x3")
-  }
+    setFourByFour(!fourByFour);
+    resetHandler();
+    setGrid(!fourByFour ? "3x3" : "4x4");
+  };
+
+  const resetHandler = () => {
+    setSquares(Array(!fourByFour ? 9 : 16).fill(""));
+    setPlayer(true);
+    gameOver = false;
+    setRefresh(!refresh)
+    // console.log("refresh", refresh)
+  };  
 
   const calculateWinner = (Arr) => {
     let lines = !fourByFour
@@ -60,12 +55,19 @@ function App() {
           [3, 6, 9, 12],
         ];
 
-    console.log(lines);
+    // console.log(lines);
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c, d] = lines[i];
 
-      if (!fourByFour ? Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c] : ((Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c] && Arr[a] === Arr[d]))) {
+      if (
+        !fourByFour
+          ? Arr[a] && Arr[a] === Arr[b] && Arr[a] === Arr[c]
+          : Arr[a] &&
+            Arr[a] === Arr[b] &&
+            Arr[a] === Arr[c] &&
+            Arr[a] === Arr[d]
+      ) {
         if (Arr[a] === "X") {
           xcount++;
           gameOver = true;
@@ -90,12 +92,9 @@ function App() {
 
   return (
     <div className="App">
-      <button
-      className="gridBtn"
-        onClick={fourByFour ? setThree : setFour}
-      >
+      {/* <button className="gridBtn" onClick={setFour}>
         Play on {grid} Grid
-      </button>
+      </button> */}
       <div className={fourByFour ? "container fourGrid" : "container"}>
         {squares.map((value, index) => {
           return (
@@ -109,6 +108,7 @@ function App() {
               setPlayer={setPlayer}
               gameOver={gameOver}
               calculateWinner={calculateWinner}
+              refresh={refresh}
             />
           );
         })}
