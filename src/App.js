@@ -7,18 +7,18 @@ let ocount = 0;
 let gameOver = false;
 let msg = 0;
 let fourByFour = false;
+let grid = "4x4"
 
 function App() {
   const [player, setPlayer] = useState(true);
   const [squares, setSquares] = useState(new Array(9).fill(""));
-  const [grid, setGrid] = useState("4x4");
 
   const winner = [player ? "X's turn" : "O's turn", "X Wins", "O Wins", "Cat's Game"];
   
   const setFour = () => {
     fourByFour = !fourByFour;
     resetHandler()
-    setGrid(!fourByFour ? "3x3" : "4x4");
+    grid = (grid === "4x4" ? "3x3" : "4x4");
   };
 
   const resetHandler = () => {
