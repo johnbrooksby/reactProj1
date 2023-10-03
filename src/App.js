@@ -22,9 +22,9 @@ function App() {
   };
 
   const resetHandler = () => {
+    gameOver = false;
     setSquares(Array(!fourByFour ? 9 : 16).fill(""));
     setPlayer(true);
-    gameOver = false;
   };  
 
   const calculateWinner = (Arr) => {
@@ -50,6 +50,15 @@ function App() {
           [3, 7, 11, 15],
           [0, 5, 10, 15],
           [3, 6, 9, 12],
+          [0, 1, 4, 5],
+          [1, 2, 5, 6],
+          [2, 3, 6, 7],
+          [4, 5, 8, 9],
+          [5, 6, 9, 10],
+          [6, 7, 10, 11],
+          [8, 9, 12, 13],
+          [9, 10, 13, 14],
+          [10, 11, 14, 15],
         ];
 
     for (let i = 0; i < lines.length; i++) {
@@ -90,6 +99,7 @@ function App() {
       <button className="gridBtn" onClick={setFour}>
         Play on {grid} Grid
       </button>
+      {grid ==="3x3" && <p>To make the game more interesting, in the 4x4 grid you can win by filling a 2x2 square.</p>}
       <div className={fourByFour ? "container fourGrid" : "container"}>
         {squares.map((value, index) => {
           return (
