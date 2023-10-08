@@ -25,6 +25,7 @@ function App() {
     gameOver = false;
     setSquares(Array(!fourByFour ? 9 : 16).fill(""));
     setPlayer(true);
+    msg = 0
   };  
 
   const calculateWinner = (Arr) => {
@@ -99,7 +100,8 @@ function App() {
       <button className="gridBtn" onClick={setFour}>
         Play on {grid} Grid
       </button>
-      {grid ==="3x3" && <p>To make the game more interesting, in the 4x4 grid you can win by filling a 2x2 square.</p>}
+      {grid ==="3x3" && <div><p>To make the game more interesting, in the 4x4 grid you can win normally</p>
+      <p className="lessMargin"> or by filling a 2x2 square.</p></div>}
       <div className={fourByFour ? "container fourGrid" : "container"}>
         {squares.map((value, index) => {
           return (
