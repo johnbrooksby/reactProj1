@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Square from "./Square";
 
@@ -13,7 +13,7 @@ let a = 0;
 function App() {
   const [player, setPlayer] = useState(true);
   const [squares, setSquares] = useState(new Array(9).fill(""));
-  const [theme, setTheme] = useState(["square", "orange", "purple", "green"]);
+  const [theme] = useState(["square", "orange", "purple", "green"]);
   // const [theme, setTheme] = useState(["square", "orange", 'purple', 'red', 'green'])
   const [color, setColor] = useState();
 
