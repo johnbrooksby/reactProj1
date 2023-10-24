@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Square from "./Square";
 
@@ -7,26 +7,39 @@ let ocount = 0;
 let gameOver = false;
 let msg = 0;
 let fourByFour = false;
-let grid = "4x4"
+let grid = "4x4";
+let a = 0;
 
 function App() {
   const [player, setPlayer] = useState(true);
   const [squares, setSquares] = useState(new Array(9).fill(""));
+  const [theme, setTheme] = useState(["square", "orange", "purple", "green"]);
+  // const [theme, setTheme] = useState(["square", "orange", 'purple', 'red', 'green'])
+  const [color, setColor] = useState();
 
-  const winner = [player ? "X's turn" : "O's turn", "X Wins", "O Wins", "Cat's Game"];
-  
+  const winner = [
+    player ? "X's turn" : "O's turn",
+    "X Wins",
+    "O Wins",
+    "Cat's Game",
+  ];
+
+  // useEffect(() => {
+  //   setColor(theme[Math.floor(Math.random() * theme.length)]);
+  // });
+
   const setFour = () => {
     fourByFour = !fourByFour;
-    resetHandler()
-    grid = (grid === "4x4" ? "3x3" : "4x4");
+    resetHandler();
+    grid = grid === "4x4" ? "3x3" : "4x4";
   };
 
   const resetHandler = () => {
     gameOver = false;
     setSquares(Array(!fourByFour ? 9 : 16).fill(""));
     setPlayer(true);
-    msg = 0
-  };  
+    msg = 0;
+  };
 
   const calculateWinner = (Arr) => {
     let lines = !fourByFour
@@ -97,11 +110,29 @@ function App() {
 
   return (
     <div className="App">
-      <button className="gridBtn" onClick={setFour}>
+      <button
+        className={
+          color === "orange"
+            ? "buttonOrange gridBtn"
+            : color === "purple"
+            ? "buttonPurple gridBtn"
+            : color === "green"
+            ? "buttonGreen gridBtn"
+            : "gridBtn"
+        }
+        onClick={setFour}
+      >
         Play on {grid} Grid
       </button>
-      {grid ==="3x3" && <div><p>To make the game more interesting, in the 4x4 grid you can win normally</p>
-      <p className="lessMargin"> or by filling a 2x2 square.</p></div>}
+      {grid === "3x3" && (
+        <div>
+          <p>
+            To make the game more interesting, in the 4x4 grid you can win
+            normally
+          </p>
+          <p className="lessMargin"> or by filling a 2x2 square.</p>
+        </div>
+      )}
       <div className={fourByFour ? "container fourGrid" : "container"}>
         {squares.map((value, index) => {
           return (
@@ -115,17 +146,40 @@ function App() {
               setPlayer={setPlayer}
               gameOver={gameOver}
               calculateWinner={calculateWinner}
+              color={color}
             />
           );
         })}
       </div>
       <span>{winner[msg]}</span>
       <br />
-      <button onClick={resetHandler}>Reset Grid</button>
+      <button
+        onClick={resetHandler}
+        className={
+          color === "orange"
+            ? "buttonOrange"
+            : color === "purple"
+            ? "buttonPurple"
+            : color === "green"
+            ? "buttonGreen"
+            : "themeBtn"
+        }
+      >
+        Reset Grid
+      </button>
       <h3>
         X Wins: {xcount} --- O Wins: {ocount}
       </h3>
       <button
+        className={
+          color === "orange"
+            ? "buttonOrange"
+            : color === "purple"
+            ? "buttonPurple"
+            : color === "green"
+            ? "buttonGreen"
+            : "themeBtn"
+        }
         onClick={() => {
           xcount = 0;
           ocount = 0;
@@ -134,6 +188,30 @@ function App() {
       >
         Reset Wins
       </button>
+      <br />
+      <div className="aDiv">
+        <a
+          className={
+            color === "orange"
+              ? "orangeA"
+              : color === "purple"
+              ? "purpleA"
+              : color === "green"
+              ? "greenA"
+              : "blue"
+          }
+          onClick={() => {
+            // setColor(theme[Math.floor(Math.random() * theme.length)]);
+            setColor(theme[a]);
+            a++;
+            if (a === theme.length) {
+              a = 0;
+            }
+          }}
+        >
+          Change Colors
+        </a>
+      </div>
     </div>
   );
 }

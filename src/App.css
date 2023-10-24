@@ -34,12 +34,12 @@ img {
   height: 80%;
 }
 
-.square {
+.square, .orange, .purple, .green {
   color:rgb(223, 237, 248);
+  font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
   border: 3px solid #61dafb;
   box-sizing: border-box;
   border-radius: 5px;
@@ -71,6 +71,19 @@ button {
   border-radius: 15px;
   background-color: #61dafb;
 }
+
+a {
+  color:#0ea5cf;
+}
+
+.aDiv {
+  margin-top: 20px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
 .gridBtn {
   margin-top: 25px;
 }
@@ -88,4 +101,70 @@ button:active {
 h3 {
   color:rgb(212, 221, 230);
   margin-bottom: 5px;
+}
+
+.orange {
+  border: 3px solid #fbc26b;
+}
+
+.buttonOrange {
+  background-color: #fbc26b;
+}
+
+.buttonOrange:hover {
+  cursor: pointer;
+  background-color: #fd9e0e;
+}
+
+.buttonOrange:active {
+  scale: .9;
+  background-color: #fbc26b;
+}
+
+.orangeA {
+  color:#fbc26b;
+}
+
+.purple {
+  border: 3px solid #ff34ee;
+}
+
+.buttonPurple {
+  background-color: #ff34ee;
+}
+
+.buttonPurple:hover {
+  cursor: pointer;
+  background-color: #d31bd3;
+}
+
+.buttonPurple:active {
+  scale: .9;
+  background-color: #eb05eb;
+}
+
+.purpleA {
+  color:#ff34ee;
+}
+
+.green {
+  border: 3px solid #7fffb0;
+}
+
+.buttonGreen {
+  background-color: #7fffb0;
+}
+
+.buttonGreen:hover {
+  cursor: pointer;
+  background-color: #00e658;
+}
+
+.buttonGreen:active {
+  scale: .9;
+  background-color: #7fffb0;
+}
+
+.greenA {
+  color:#7fffb0;
 }
