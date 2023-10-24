@@ -13,9 +13,14 @@ let a = 0;
 function App() {
   const [player, setPlayer] = useState(true);
   const [squares, setSquares] = useState(new Array(9).fill(""));
-  const [theme] = useState(["square", "orange", "purple", "green"]);
+  const [theme] = useState(["square", "orange", "purple", "green", "red", "yellow"]);
   // const [theme, setTheme] = useState(["square", "orange", 'purple', 'red', 'green'])
-  const [color, setColor] = useState();
+  
+  if(localStorage.getItem("color reference")){
+    a = localStorage.getItem("color reference")
+  }
+  const [color, setColor] = useState(theme[a]);
+  localStorage.setItem("color reference", a)
 
   const winner = [
     player ? "X's turn" : "O's turn",
@@ -112,12 +117,11 @@ function App() {
     <div className="App">
       <button
         className={
-          color === "orange"
-            ? "buttonOrange gridBtn"
-            : color === "purple"
-            ? "buttonPurple gridBtn"
-            : color === "green"
-            ? "buttonGreen gridBtn"
+          color === "orange" ? "buttonOrange gridBtn"
+            : color === "purple" ? "buttonPurple gridBtn"
+            : color === "green" ? "buttonGreen gridBtn"
+            : color === "red" ? "buttonRed gridBtn"
+            : color === "yellow" ? "buttonYellow gridBtn"
             : "gridBtn"
         }
         onClick={setFour}
@@ -156,12 +160,11 @@ function App() {
       <button
         onClick={resetHandler}
         className={
-          color === "orange"
-            ? "buttonOrange"
-            : color === "purple"
-            ? "buttonPurple"
-            : color === "green"
-            ? "buttonGreen"
+          color === "orange" ? "buttonOrange"
+            : color === "purple" ? "buttonPurple"
+            : color === "green" ? "buttonGreen"
+            : color === "red" ? "buttonRed"
+            : color === "yellow" ? "buttonYellow"
             : "themeBtn"
         }
       >
@@ -172,12 +175,11 @@ function App() {
       </h3>
       <button
         className={
-          color === "orange"
-            ? "buttonOrange"
-            : color === "purple"
-            ? "buttonPurple"
-            : color === "green"
-            ? "buttonGreen"
+          color === "orange" ? "buttonOrange"
+            : color === "purple" ? "buttonPurple"
+            : color === "green" ? "buttonGreen"
+            : color === "red" ? "buttonRed"
+            : color === "yellow" ? "buttonYellow"
             : "themeBtn"
         }
         onClick={() => {
@@ -192,12 +194,11 @@ function App() {
       <div className="aDiv">
         <a
           className={
-            color === "orange"
-              ? "orangeA"
-              : color === "purple"
-              ? "purpleA"
-              : color === "green"
-              ? "greenA"
+            color === "orange" ? "orangeA"
+              : color === "purple" ? "purpleA"
+              : color === "green" ? "greenA"
+              : color === "red" ? "redA"
+              : color === "yellow" ? "yellowA"
               : "blue"
           }
           onClick={() => {
@@ -206,6 +207,7 @@ function App() {
             if (a === theme.length) {
               a = 0;
             }
+            localStorage.setItem("color reference", a)
           }}
         >
           Change Colors

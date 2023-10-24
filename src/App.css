@@ -34,7 +34,7 @@ img {
   height: 80%;
 }
 
-.square, .orange, .purple, .green {
+.square, .orange, .purple, .green, .red, .yellow {
   color:rgb(223, 237, 248);
   font-size: 40px;
   display: flex;
@@ -167,4 +167,48 @@ h3 {
 
 .greenA {
   color:#7fffb0;
+}
+
+.red {
+  border: 3px solid #f91616;
+}
+
+.buttonRed {
+  background-color: #f91616;
+}
+
+.buttonRed:hover {
+  cursor: pointer;
+  background-color: #d00404;
+}
+
+.buttonRed:active {
+  scale: .9;
+  background-color: #f91616;
+}
+
+.redA {
+  color:#f91616;
+}
+
+.yellow {
+  border: 3px solid #fafa51;
+}
+
+.buttonYellow {
+  background-color: #fafa51;
+}
+
+.buttonYellow:hover {
+  cursor: pointer;
+  background-color: #f2ea07;
+}
+
+.buttonYellow:active {
+  scale: .9;
+  background-color: #fafa51;
+}
+
+.yellowA {
+  color:#fafa51;
 }
