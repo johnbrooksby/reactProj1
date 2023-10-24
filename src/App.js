@@ -201,9 +201,8 @@ function App() {
               : "blue"
           }
           onClick={() => {
-            // setColor(theme[Math.floor(Math.random() * theme.length)]);
-            setColor(theme[a]);
             a++;
+            setColor(theme[a]);
             if (a === theme.length) {
               a = 0;
             }
