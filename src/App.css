@@ -22,6 +22,10 @@ span {
   margin-top: 15px;
 }
 
+.blueSpan {
+  color:#61dafb;
+}
+
 p {
   color: white;
 }

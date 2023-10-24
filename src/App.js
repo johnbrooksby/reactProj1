@@ -192,10 +192,39 @@ function App() {
       </button>
       <br />
       <div className="aDiv">
-        <a
+        <a onClick={() => {
+          setColor(theme[a])
+          localStorage.setItem("color reference", a)
+        }}>
+        <span className="blueSpan"
+          onClick={() => {
+            a = 0;
+          }}>Ch</span>
+        <span className="orangeA"
+          onClick={() => {
+            a = 1;
+          }}>an</span>
+        <span className="purpleA"
+          onClick={() => {
+            a = 2;
+          }}>ge</span>
+        <span className="greenA"
+          onClick={() => {
+            a = 3
+          }}> Co</span>
+        <span className="redA"
+          onClick={() => {
+            a = 4
+          }}>lo</span>
+        <span className="yellowA"
+          onClick={() => {
+            a = 5
+          }}>rs</span>
+        </a>
+        {/* <a
           className={
             color === "orange" ? "orangeA"
-              : color === "purple" ? "purpleA"
+            : color === "purple" ? "purpleA"
               : color === "green" ? "greenA"
               : color === "red" ? "redA"
               : color === "yellow" ? "yellowA"
@@ -211,7 +240,7 @@ function App() {
           }}
         >
           Change Colors
-        </a>
+        </a> */}
       </div>
     </div>
   );
