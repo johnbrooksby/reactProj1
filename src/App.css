@@ -179,6 +179,7 @@ h3 {
 
 .buttonRed {
   background-color: #f91616;
+  color: white;
 }
 
 .buttonRed:hover {
@@ -196,7 +197,7 @@ h3 {
 }
 
 .yellow {
-  border: 3px solid #fafa51;
+  border: 3px solid #ffff00;
 }
 
 .buttonYellow {
