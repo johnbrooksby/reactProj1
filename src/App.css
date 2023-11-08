@@ -22,8 +22,19 @@ span {
   margin-top: 15px;
 }
 
+.darkmode {
+  margin-top: 30px;
+  color:#61dafb;
+  font-weight: bolder;
+}
+
 .blueSpan {
   color:#61dafb;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 p {
@@ -78,11 +89,22 @@ button {
 }
 
 a {
-  color:#0ea5cf;
+  color:#61dafb;
 }
 
 .aDiv {
   margin-top: 20px;
+  width: 190px;
+  height: 40px;
+  /* background-color: #232323; */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aDivLight {
+  background-color: rgb(102, 102, 102);
 }
 
 a:hover {
@@ -217,4 +239,9 @@ h3 {
 
 .yellowA {
   color:#fafa51;
+}
+
+.lightMode {
+  color:black;
+  background-color: rgb(255, 255, 255);
 }
