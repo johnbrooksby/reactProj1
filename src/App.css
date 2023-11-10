@@ -305,26 +305,26 @@ h3 {
 }
 
 .darkGreen {
-  border: 3px solid green;
+  border: 3px solid #007b2f;
 }
 
 .buttonDarkGreen {
-  background-color: green;
+  background-color: #007b2f;
   color: white
 }
 
 .buttonDarkGreen:hover {
   cursor: pointer;
-  background-color: rgb(1, 174, 1);
+  background-color: #01b948;
 }
 
 .buttonDarkGreen:active {
   scale: .9;
-  background-color: green;
+  background-color: #007b2f;
 }
 
 .darkGreenA {
-  color:green;
+  color:#007b2f;
 }
 
 .darkYellow {

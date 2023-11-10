@@ -36,8 +36,6 @@ function App() {
     "darkYellow",
   ]);
 
-  // localStorage.setItem("light mode", lightMode);
-
   if (localStorage.getItem("color reference")) {
     a = localStorage.getItem("color reference");
   }
@@ -132,25 +130,34 @@ function App() {
   };
 
   let colorTheme
-  color === "orange"
-    ? colorTheme = "buttonOrange"
-    : color === "purple"
-    ? colorTheme = "buttonPurple"
-    : color === "green"
-    ? colorTheme = "buttonGreen"
-    : color === "red"
-    ? colorTheme = "buttonRed"
-    : color === "yellow"
-    ? colorTheme = "buttonYellow"
-    : color === "darkBlue"
-    ? colorTheme = "buttonDarkBlue"
-    : color === "darkGreen"
-    ? colorTheme = "buttonDarkGreen"
-    : color === "darkOrange"
-    ? colorTheme = "buttonDarkOrange"
-    : color === "darkYellow"
-    ? colorTheme = "buttonDarkYellow"
+  color === "orange" ? colorTheme = "buttonOrange"
+    : color === "purple" ? colorTheme = "buttonPurple"
+    : color === "green" ? colorTheme = "buttonGreen"
+    : color === "red" ? colorTheme = "buttonRed"
+    : color === "yellow" ? colorTheme = "buttonYellow"
+    : color === "darkBlue" ? colorTheme = "buttonDarkBlue"
+    : color === "darkGreen" ? colorTheme = "buttonDarkGreen"
+    : color === "darkOrange" ? colorTheme = "buttonDarkOrange"
+    : color === "darkYellow" ? colorTheme = "buttonDarkYellow"
     : colorTheme = "themeBtn"
+
+    const lightModeClickHandler = () => {
+      if (lightMode === "light"){
+        lightMode = "dark"
+       } else {
+          lightMode = "light"
+       }
+      if (a > 5 && lightMode === "dark"){
+        a -= 6
+      } else if (a < 6 && lightMode === "light") {
+        a = +a + 6
+      }
+
+      console.log("a after lightmode button click", a)
+      localStorage.setItem("light mode", lightMode)
+      localStorage.setItem("color reference", a)
+      refresh[1](prev => !prev)
+    }
   
   return (
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
@@ -229,7 +236,7 @@ function App() {
             <span
               className={lightMode === "light" ? "darkOrangeA" : "orangeA"}
               onClick={() => {
-                a = (lightMode === "light") ? 7 : 1;
+                a = lightMode === "light" ? 7 : 1;
               }}
             >
               an
@@ -245,7 +252,7 @@ function App() {
             <span
               className={lightMode === "light" ? "darkGreenA " : "greenA"}
               onClick={() => {
-                a = (lightMode === "light") ? 9 : 3;
+                a = lightMode === "light" ? 9 : 3;
               }}
             >
               {" "}
@@ -275,19 +282,7 @@ function App() {
         <button
           className={lightMode === "light" ? "noStyleBtn darkmode" : "noStyleBtn whiteText darkmode"}
           onClick={() => {
-            if (lightMode === "light"){
-              lightMode = "dark"
-             } else {
-                lightMode = "light"
-             }
-            if (a > 5 && lightMode === "dark"){
-              a = a - 6
-            } else if (a < 6 && lightMode === "light") {
-              a = +a + 6
-            }
-            localStorage.setItem("light mode", lightMode)
-            localStorage.setItem("color reference", a)
-            refresh[1](prev => !prev)
+            lightModeClickHandler()
           }}>
           {lightMode === "light" ? "Dark" : "Light"} Mode
         </button>
