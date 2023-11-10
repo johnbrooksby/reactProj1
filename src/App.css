@@ -23,9 +23,10 @@ span {
 }
 
 .darkmode {
-  margin-top: 30px;
-  color:#61dafb;
+  margin-top: 10px;
+  /* color:#61dafb; */
   font-weight: bolder;
+  font-size: 12pt;
 }
 
 .blueSpan {
@@ -38,6 +39,10 @@ span {
 }
 
 p {
+  color: white;
+}
+
+.whiteText {
   color: white;
 }
 
@@ -276,6 +281,52 @@ h3 {
   color: darkblue;
 }
 
+.darkOrange {
+  border: 3px solid orange;
+}
+
+.buttonDarkOrange {
+  background-color: orange;
+  /* color: white */
+}
+
+.buttonDarkOrange:hover {
+  cursor: pointer;
+  background-color: rgb(255, 192, 74);
+}
+
+.buttonDarkOrange:active {
+  scale: .9;
+  background-color: orange;
+}
+
+.darkOrangeA {
+  color:orange;
+}
+
+.darkGreen {
+  border: 3px solid green;
+}
+
+.buttonDarkGreen {
+  background-color: green;
+  color: white
+}
+
+.buttonDarkGreen:hover {
+  cursor: pointer;
+  background-color: rgb(1, 174, 1);
+}
+
+.buttonDarkGreen:active {
+  scale: .9;
+  background-color: green;
+}
+
+.darkGreenA {
+  color:green;
+}
+
 .darkYellow {
   border: 3px solid #eded00;
 }
@@ -294,7 +345,7 @@ h3 {
   background-color: #eded00;
 }
 
-.yellowA {
+.darkYellowA {
   color:#eded00;
 }
 
