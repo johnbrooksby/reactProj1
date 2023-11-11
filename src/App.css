@@ -54,7 +54,7 @@ img {
   height: 80%;
 }
 
-.square, .orange, .purple, .green, .red, .yellow {
+.square, .orange, .purple, .green, .red, .yellow, .darkBlue, .darkOrange, .darkYellow, .darkGreen {
   color:rgb(223, 237, 248);
   font-size: 40px;
   display: flex;
