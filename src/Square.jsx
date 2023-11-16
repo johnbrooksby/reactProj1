@@ -21,7 +21,7 @@ const Square = (props) => {
 
   // No logo for "O"
   return (
-    <div className={props.color ? props.color : "square"} onClick={handleClick}>
+    <div className={props.color ? props.color : "blue"} onClick={handleClick}>
     {/* <div className="square" onClick={handleClick}> */}
       {props.squareValue}
     </div>

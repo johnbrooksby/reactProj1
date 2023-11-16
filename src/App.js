@@ -11,18 +11,14 @@ let grid = "4x4";
 let a = 0;
 let lightMode = "dark";
 
-
 function App() {
-
   if (localStorage.getItem("light mode") === "light") {
     lightMode = "light";
   }
   const [player, setPlayer] = useState(true);
- 
-  const refresh = useState(true)
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [theme] = useState([
-    "square",
+    "blue",
     "orange",
     "purple",
     "green",
@@ -129,36 +125,43 @@ function App() {
     return;
   };
 
-  let colorTheme
-  color === "orange" ? colorTheme = "buttonOrange"
-    : color === "purple" ? colorTheme = "buttonPurple"
-    : color === "green" ? colorTheme = "buttonGreen"
-    : color === "red" ? colorTheme = "buttonRed"
-    : color === "yellow" ? colorTheme = "buttonYellow"
-    : color === "darkBlue" ? colorTheme = "buttonDarkBlue"
-    : color === "darkGreen" ? colorTheme = "buttonDarkGreen"
-    : color === "darkOrange" ? colorTheme = "buttonDarkOrange"
-    : color === "darkYellow" ? colorTheme = "buttonDarkYellow"
-    : colorTheme = "themeBtn"
+  let colorTheme;
+  color === "orange"
+    ? (colorTheme = "buttonOrange")
+    : color === "purple"
+    ? (colorTheme = "buttonPurple")
+    : color === "green"
+    ? (colorTheme = "buttonGreen")
+    : color === "red"
+    ? (colorTheme = "buttonRed")
+    : color === "yellow"
+    ? (colorTheme = "buttonYellow")
+    : color === "darkBlue"
+    ? (colorTheme = "buttonDarkBlue")
+    : color === "darkGreen"
+    ? (colorTheme = "buttonDarkGreen")
+    : color === "darkOrange"
+    ? (colorTheme = "buttonDarkOrange")
+    : color === "darkYellow"
+    ? (colorTheme = "buttonDarkYellow")
+    : (colorTheme = "themeBtn");
 
-    const lightModeClickHandler = () => {
-      if (lightMode === "light"){
-        lightMode = "dark"
-       } else {
-          lightMode = "light"
-       }
-      if (a > 5 && lightMode === "dark"){
-        a -= 6
-      } else if (a < 6 && lightMode === "light") {
-        a = +a + 6
-      }
-
-      console.log("a after lightmode button click", a)
-      localStorage.setItem("light mode", lightMode)
-      localStorage.setItem("color reference", a)
-      refresh[1](prev => !prev)
+  const lightModeClickHandler = () => {
+    if (lightMode === "light") {
+      lightMode = "dark";
+    } else {
+      lightMode = "light";
     }
-  
+    if (+a > 5 && lightMode === "dark") {
+      a -= 6;
+    } else if (+a < 6 && lightMode === "light") {
+      a = +a + 6;
+    }
+    setColor(theme[a])
+    localStorage.setItem("light mode", lightMode);
+    localStorage.setItem("color reference", a);
+  };
+
   return (
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
       <button
@@ -173,7 +176,16 @@ function App() {
             To make the game more interesting, in the 4x4 grid you can win
             normally
           </p>
-          <p className={lightMode === "light" ? "lessMargin text lightMode" : "lessMargin text"}> or by filling a 2x2 square.</p>
+          <p
+            className={
+              lightMode === "light"
+                ? "lessMargin text lightMode"
+                : "lessMargin text"
+            }
+          >
+            {" "}
+            or by filling a 2x2 square.
+          </p>
         </div>
       )}
       <div className={fourByFour ? "container fourGrid" : "container"}>
@@ -194,12 +206,11 @@ function App() {
           );
         })}
       </div>
-      <span className={lightMode === "light" ? "lightMode" : undefined}>{winner[msg]}</span>
+      <span className={lightMode === "light" ? "lightMode" : undefined}>
+        {winner[msg]}
+      </span>
       <br />
-      <button
-        onClick={resetHandler}
-        className={colorTheme}
-      >
+      <button onClick={resetHandler} className={colorTheme}>
         Reset Grid
       </button>
       <h3 className={lightMode === "light" ? "lightMode" : undefined}>
@@ -226,7 +237,7 @@ function App() {
             }}
           >
             <span
-              className={lightMode === "light" ? "darkBlueA " :"blueSpan"}
+              className={lightMode === "light" ? "darkBlueA " : "blueSpan"}
               onClick={() => {
                 a = lightMode === "light" ? 6 : 0;
               }}
@@ -275,15 +286,19 @@ function App() {
               rs
             </span>
           </button>
-          
         </div>
       </div>
       <div>
         <button
-          className={lightMode === "light" ? "noStyleBtn darkmode" : "noStyleBtn whiteText darkmode"}
+          className={
+            lightMode === "light"
+              ? "noStyleBtn darkmode"
+              : "noStyleBtn whiteText darkmode"
+          }
           onClick={() => {
-            lightModeClickHandler()
-          }}>
+            lightModeClickHandler();
+          }}
+        >
           {lightMode === "light" ? "Dark" : "Light"} Mode
         </button>
       </div>
