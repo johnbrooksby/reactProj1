@@ -65,6 +65,14 @@ img {
   border-radius: 5px;
 }
 
+.black {
+  color: black;
+}
+
+.grey {
+  color: lightgrey;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 70px);
@@ -350,6 +358,6 @@ h3 {
 }
 
 .lightMode {
-  color:black;
+  color:rgb(20,20,20);
   background-color: rgb(255, 255, 255);
 }

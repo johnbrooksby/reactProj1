@@ -192,7 +192,9 @@ function App() {
         {squares.map((value, index) => {
           return (
             <Square
+              // className={lightMode === "light" ? "black" : "grey"}
               key={index}
+              lightMode={lightMode}
               setSquares={setSquares}
               index={index}
               squareValue={value}
