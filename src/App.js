@@ -26,9 +26,9 @@ function App() {
     "yellow",
     "darkBlue",
     "darkOrange",
-    "purple",
+    "purple2",
     "darkGreen",
-    "red",
+    "red2",
     "darkYellow",
   ]);
 
@@ -134,10 +134,14 @@ function App() {
     ? (colorTheme = "buttonGreen")
     : color === "red"
     ? (colorTheme = "buttonRed")
+    : color === "red2"
+    ? (colorTheme = "buttonRed2")
     : color === "yellow"
     ? (colorTheme = "buttonYellow")
     : color === "darkBlue"
     ? (colorTheme = "buttonDarkBlue")
+    : color === "purple2"
+    ? (colorTheme = "buttonPurple2")
     : color === "darkGreen"
     ? (colorTheme = "buttonDarkGreen")
     : color === "darkOrange"
@@ -160,6 +164,7 @@ function App() {
     setColor(theme[a])
     localStorage.setItem("light mode", lightMode);
     localStorage.setItem("color reference", a);
+    return
   };
 
   return (
@@ -192,7 +197,6 @@ function App() {
         {squares.map((value, index) => {
           return (
             <Square
-              // className={lightMode === "light" ? "black" : "grey"}
               key={index}
               lightMode={lightMode}
               setSquares={setSquares}
@@ -255,9 +259,9 @@ function App() {
               an
             </span>
             <span
-              className="purpleA"
+              className={lightMode === "light" ? "purpleA" : "purpleA2"}
               onClick={() => {
-                a = 2;
+                a = lightMode === "light" ? 8 : 2;
               }}
             >
               ge
@@ -272,9 +276,9 @@ function App() {
               Co
             </span>
             <span
-              className="redA"
+              className={lightMode === "light" ? "redA" : "redA2"}
               onClick={() => {
-                a = 4;
+                a = lightMode === "light" ? 10 : 4;
               }}
             >
               lo

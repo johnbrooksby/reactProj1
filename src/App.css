@@ -54,7 +54,7 @@ img {
   height: 80%;
 }
 
-.blue, .orange, .purple, .green, .red, .yellow, .darkBlue, .darkOrange, .darkYellow, .darkGreen {
+.blue, .orange, .purple, .purple2, .green, .red, .red2, .yellow, .darkBlue, .darkOrange, .darkYellow, .darkGreen {
   color:rgb(223, 237, 248);
   font-size: 40px;
   display: flex;
@@ -199,6 +199,28 @@ h3 {
   color:#ff34ee;
 }
 
+.purple2 {
+  border: 3px solid #ff34ef;
+}
+
+.buttonPurple2 {
+  background-color: #ff34ef;
+}
+
+.buttonPurple2:hover {
+  cursor: pointer;
+  background-color: #d31bd3;
+}
+
+.buttonPurple2:active {
+  scale: .9;
+  background-color: #eb05eb;
+}
+
+.purpleA2 {
+  color:#ff34ef;
+}
+
 .green {
   border: 3px solid #7fffb0;
 }
@@ -242,6 +264,29 @@ h3 {
 
 .redA {
   color:#f91616;
+}
+
+.red2 {
+  border: 3px solid #f91617;
+}
+
+.buttonRed2 {
+  background-color: #f91617;
+  color: white;
+}
+
+.buttonRed2:hover {
+  cursor: pointer;
+  background-color: #d00404;
+}
+
+.buttonRed2:active {
+  scale: .9;
+  background-color: #f91617;
+}
+
+.redA2 {
+  color:#f91617;
 }
 
 .yellow {
