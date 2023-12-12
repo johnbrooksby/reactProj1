@@ -18,6 +18,7 @@ const Square = (props) => {
         return;
       }
   };
+  console.log(props.color)
 
   // No logo for "O"
   return (

@@ -15,7 +15,10 @@ function App() {
   if (localStorage.getItem("light mode") === "light") {
     lightMode = "light";
   }
+
+  const [rand, setRand] = useState(false);
   const [player, setPlayer] = useState(true);
+  // const [colorTheme2, setColorTheme2] = useState("themeBtn")
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [theme] = useState([
     "blue",
@@ -134,12 +137,12 @@ function App() {
     ? (colorTheme = "buttonGreen")
     : color === "red"
     ? (colorTheme = "buttonRed")
-    : color === "red2"
-    ? (colorTheme = "buttonRed2")
     : color === "yellow"
     ? (colorTheme = "buttonYellow")
     : color === "darkBlue"
     ? (colorTheme = "buttonDarkBlue")
+    : color === "red2"
+    ? (colorTheme = "buttonRed2")
     : color === "purple2"
     ? (colorTheme = "buttonPurple2")
     : color === "darkGreen"
@@ -149,6 +152,17 @@ function App() {
     : color === "darkYellow"
     ? (colorTheme = "buttonDarkYellow")
     : (colorTheme = "themeBtn");
+
+  // switch(color) {
+  //   case "orange":
+  //     colorTheme = "buttonOrange"
+  //     break;
+  //   case "purple":
+  //     colorTheme = "buttonPurple"
+  //     break;
+  //   default:
+  //     colorTheme = "themeBtn"
+  // }
 
   const lightModeClickHandler = () => {
     if (lightMode === "light") {
@@ -161,18 +175,15 @@ function App() {
     } else if (+a < 6 && lightMode === "light") {
       a = +a + 6;
     }
-    setColor(theme[a])
+    setColor(theme[a]);
     localStorage.setItem("light mode", lightMode);
     localStorage.setItem("color reference", a);
-    return
+    return;
   };
 
   return (
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
-      <button
-        className={`${colorTheme} gridBtn`}
-        onClick={setFour}
-      >
+      <button className={`${colorTheme} gridBtn`} onClick={setFour}>
         Play on {grid} Grid
       </button>
       {grid === "3x3" && (
@@ -207,7 +218,7 @@ function App() {
               setPlayer={setPlayer}
               gameOver={gameOver}
               calculateWinner={calculateWinner}
-              color={color}
+              color={rand ? theme[Math.floor(Math.random() * 12)] : color}
             />
           );
         })}
@@ -246,6 +257,7 @@ function App() {
               className={lightMode === "light" ? "darkBlueA " : "blueSpan"}
               onClick={() => {
                 a = lightMode === "light" ? 6 : 0;
+                setRand(false);
               }}
             >
               Ch
@@ -254,6 +266,7 @@ function App() {
               className={lightMode === "light" ? "darkOrangeA" : "orangeA"}
               onClick={() => {
                 a = lightMode === "light" ? 7 : 1;
+                setRand(false);
               }}
             >
               an
@@ -262,6 +275,7 @@ function App() {
               className={lightMode === "light" ? "purpleA" : "purpleA2"}
               onClick={() => {
                 a = lightMode === "light" ? 8 : 2;
+                setRand(false);
               }}
             >
               ge
@@ -270,6 +284,7 @@ function App() {
               className={lightMode === "light" ? "darkGreenA " : "greenA"}
               onClick={() => {
                 a = lightMode === "light" ? 9 : 3;
+                setRand(false);
               }}
             >
               {" "}
@@ -279,6 +294,7 @@ function App() {
               className={lightMode === "light" ? "redA" : "redA2"}
               onClick={() => {
                 a = lightMode === "light" ? 10 : 4;
+                setRand(false);
               }}
             >
               lo
@@ -287,12 +303,29 @@ function App() {
               className={lightMode === "light" ? "darkYellowA " : "yellowA"}
               onClick={() => {
                 a = lightMode === "light" ? 11 : 5;
+                setRand(false);
               }}
             >
               rs
             </span>
           </button>
         </div>
+      </div>
+      <div>
+        <button
+          className={
+            lightMode === "light"
+              ? "noStyleBtn darkmode"
+              : "noStyleBtn whiteText darkmode"
+          }
+          onClick={() => {
+            colorTheme = theme[Math.floor(Math.random() * 12)]
+            setRand(!rand);
+            console.log(colorTheme)
+          }}
+        >
+          Random Colors
+        </button>
       </div>
       <div>
         <button
