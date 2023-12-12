@@ -8,7 +8,7 @@ let gameOver = false;
 let msg = 0;
 let fourByFour = false;
 let grid = "4x4";
-let a = 0;
+let a = localStorage.getItem("color reference");
 let lightMode = "dark";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     lightMode = "light";
   }
 
-  const [rand, setRand] = useState(false);
+  const [rand, setRand] = useState(localStorage.getItem("rand") === "true" ? true : false);
   const [player, setPlayer] = useState(true);
   // const [colorTheme2, setColorTheme2] = useState("themeBtn")
   const [squares, setSquares] = useState(new Array(9).fill(""));
@@ -35,9 +35,6 @@ function App() {
     "darkYellow",
   ]);
 
-  if (localStorage.getItem("color reference")) {
-    a = localStorage.getItem("color reference");
-  }
   const [color, setColor] = useState(theme[a]);
   localStorage.setItem("color reference", a);
 
@@ -250,14 +247,15 @@ function App() {
             className="noStyleBtn"
             onClick={() => {
               setColor(theme[a]);
+              setRand(false);
               localStorage.setItem("color reference", a);
+              localStorage.setItem("rand", false)
             }}
           >
             <span
               className={lightMode === "light" ? "darkBlueA " : "blueSpan"}
               onClick={() => {
                 a = lightMode === "light" ? 6 : 0;
-                setRand(false);
               }}
             >
               Ch
@@ -266,7 +264,6 @@ function App() {
               className={lightMode === "light" ? "darkOrangeA" : "orangeA"}
               onClick={() => {
                 a = lightMode === "light" ? 7 : 1;
-                setRand(false);
               }}
             >
               an
@@ -275,7 +272,6 @@ function App() {
               className={lightMode === "light" ? "purpleA" : "purpleA2"}
               onClick={() => {
                 a = lightMode === "light" ? 8 : 2;
-                setRand(false);
               }}
             >
               ge
@@ -284,7 +280,6 @@ function App() {
               className={lightMode === "light" ? "darkGreenA " : "greenA"}
               onClick={() => {
                 a = lightMode === "light" ? 9 : 3;
-                setRand(false);
               }}
             >
               {" "}
@@ -294,7 +289,6 @@ function App() {
               className={lightMode === "light" ? "redA" : "redA2"}
               onClick={() => {
                 a = lightMode === "light" ? 10 : 4;
-                setRand(false);
               }}
             >
               lo
@@ -303,7 +297,6 @@ function App() {
               className={lightMode === "light" ? "darkYellowA " : "yellowA"}
               onClick={() => {
                 a = lightMode === "light" ? 11 : 5;
-                setRand(false);
               }}
             >
               rs
@@ -320,8 +313,8 @@ function App() {
           }
           onClick={() => {
             colorTheme = theme[Math.floor(Math.random() * 12)]
+            localStorage.setItem("rand", !rand)
             setRand(!rand);
-            console.log(colorTheme)
           }}
         >
           Random Colors
