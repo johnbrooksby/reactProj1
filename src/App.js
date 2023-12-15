@@ -180,7 +180,13 @@ function App() {
 
   return (
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
-      <button className={`${colorTheme} gridBtn`} onClick={setFour}>
+      <button className={`${colorTheme} gridBtn`} onClick={setFour} style={{
+        backgroundColor: rand
+          ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+              Math.random() * 255
+            )}, ${Math.floor(Math.random() * 255)}`
+          : null,
+      }}>
         Play on {grid} Grid
       </button>
       {grid === "3x3" && (
@@ -215,8 +221,13 @@ function App() {
               setPlayer={setPlayer}
               gameOver={gameOver}
               calculateWinner={calculateWinner}
-              color={rand ? theme[Math.floor(Math.random() * 12)] : color}
-            />
+              rand={rand}
+              // color={rand ? theme[Math.floor(Math.random() * 12)] : color}
+              color={color}
+              // color={rand ? `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` : color}
+              // style={{color: (rand ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}` : color)}}
+              // color={color}
+            /> 
           );
         })}
       </div>
@@ -224,7 +235,13 @@ function App() {
         {winner[msg]}
       </span>
       <br />
-      <button onClick={resetHandler} className={colorTheme}>
+      <button onClick={resetHandler} className={colorTheme} style={{
+        backgroundColor: rand
+          ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+              Math.random() * 255
+            )}, ${Math.floor(Math.random() * 255)}`
+          : null,
+      }}>
         Reset Grid
       </button>
       <h3 className={lightMode === "light" ? "lightMode" : undefined}>
@@ -236,6 +253,13 @@ function App() {
           xcount = 0;
           ocount = 0;
           resetHandler();
+        }}
+        style={{
+          backgroundColor: rand
+            ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+                Math.random() * 255
+              )}, ${Math.floor(Math.random() * 255)}`
+            : null,
         }}
       >
         Reset Wins
