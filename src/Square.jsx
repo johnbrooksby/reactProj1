@@ -22,11 +22,16 @@ const Square = (props) => {
   // No logo for "O"
   return (
     <div
+      // style={{
+      //   borderColor: props.rand
+      //     ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+      //         Math.random() * 255
+      //       )}, ${Math.floor(Math.random() * 255)}`
+      //     : null,
+      // }}
       style={{
         borderColor: props.rand
-          ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-              Math.random() * 255
-            )}, ${Math.floor(Math.random() * 255)}`
+          ? `hsl(${Math.floor(Math.random() * 359)}, 100%, 50%`
           : null,
       }}
       className={

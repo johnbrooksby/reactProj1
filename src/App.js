@@ -10,6 +10,7 @@ let fourByFour = false;
 let grid = "4x4";
 let a = localStorage.getItem("color reference");
 let lightMode = "dark";
+let lightness = lightMode = "dark" ? 60: 30
 
 function App() {
   if (localStorage.getItem("light mode") === "light") {
@@ -182,9 +183,7 @@ function App() {
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
       <button className={`${colorTheme} gridBtn`} onClick={setFour} style={{
         backgroundColor: rand
-          ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-              Math.random() * 255
-            )}, ${Math.floor(Math.random() * 255)}`
+        ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
           : null,
       }}>
         Play on {grid} Grid
@@ -237,9 +236,7 @@ function App() {
       <br />
       <button onClick={resetHandler} className={colorTheme} style={{
         backgroundColor: rand
-          ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-              Math.random() * 255
-            )}, ${Math.floor(Math.random() * 255)}`
+        ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
           : null,
       }}>
         Reset Grid
@@ -256,9 +253,7 @@ function App() {
         }}
         style={{
           backgroundColor: rand
-            ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-                Math.random() * 255
-              )}, ${Math.floor(Math.random() * 255)}`
+          ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
             : null,
         }}
       >
