@@ -289,28 +289,17 @@ function App() {
         </button>
       </div>
       <br />
-      <a
+
+      {/* Comment in when About page is ready */}
+      {/* <a
         onClick={() => {
           navigate("/About");
         }}
       >
         About
-      </a>
-      {/* <NavLink to='About' >About</NavLink> */}
-      {/* <button onClick={() => {
-        setAbout(true)
-        console.log(about)
-      }}>About</button> */}
-      {/* <Routes> */}
-      {/* <Route path="/" element={<App />}></Route> */}
-      {/* <Route path="About" element={<About />}></Route> */}
-      {/* </Routes> */}
+      </a> */}
+
     </div>
-    // ) : (
-    //   <div>
-    //     <About setAbout={setAbout}/>
-    //   </div>
-    // )
   );
 }
 
