@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import "./App.css";
 import Square from "./Square";
 import ChangeColorBtn from "./ChangeColorBtn";
 import RandomBtn from "./RandomBtn";
-// import About from "./About";
+import About from "./About";
 
 let xcount = 0;
 let ocount = 0;
@@ -26,6 +26,7 @@ function App() {
     localStorage.getItem("rand") === "true" ? true : false
   );
   const [player, setPlayer] = useState(true);
+  const [about, setAbout] = useState(false);
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [theme] = useState([
     "blue",
@@ -288,12 +289,28 @@ function App() {
         </button>
       </div>
       <br />
-      {/* <NavLink to="About">About</NavLink> */}
+      <a
+        onClick={() => {
+          navigate("/About");
+        }}
+      >
+        About
+      </a>
+      {/* <NavLink to='About' >About</NavLink> */}
+      {/* <button onClick={() => {
+        setAbout(true)
+        console.log(about)
+      }}>About</button> */}
       {/* <Routes> */}
-        {/* <Route path="/" element={<App />}></Route> */}
-        {/* <Route path="About" element={<About />}></Route>
-      </Routes> */}
+      {/* <Route path="/" element={<App />}></Route> */}
+      {/* <Route path="About" element={<About />}></Route> */}
+      {/* </Routes> */}
     </div>
+    // ) : (
+    //   <div>
+    //     <About setAbout={setAbout}/>
+    //   </div>
+    // )
   );
 }
 
