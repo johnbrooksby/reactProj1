@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import "./App.css";
 import Square from "./Square";
+import ChangeColorBtn from "./ChangeColorBtn";
+import RandomBtn from "./RandomBtn";
+// import About from "./About";
 
 let xcount = 0;
 let ocount = 0;
@@ -10,16 +14,18 @@ let fourByFour = false;
 let grid = "4x4";
 let a = localStorage.getItem("color reference");
 let lightMode = "dark";
-let lightness = lightMode = "dark" ? 60: 30
+let lightness = (lightMode = "dark" ? 60 : 30);
 
 function App() {
   if (localStorage.getItem("light mode") === "light") {
     lightMode = "light";
   }
 
-  const [rand, setRand] = useState(localStorage.getItem("rand") === "true" ? true : false);
+  const navigate = useNavigate();
+  const [rand, setRand] = useState(
+    localStorage.getItem("rand") === "true" ? true : false
+  );
   const [player, setPlayer] = useState(true);
-  // const [colorTheme2, setColorTheme2] = useState("themeBtn")
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [theme] = useState([
     "blue",
@@ -151,17 +157,6 @@ function App() {
     ? (colorTheme = "buttonDarkYellow")
     : (colorTheme = "themeBtn");
 
-  // switch(color) {
-  //   case "orange":
-  //     colorTheme = "buttonOrange"
-  //     break;
-  //   case "purple":
-  //     colorTheme = "buttonPurple"
-  //     break;
-  //   default:
-  //     colorTheme = "themeBtn"
-  // }
-
   const lightModeClickHandler = () => {
     if (lightMode === "light") {
       lightMode = "dark";
@@ -181,11 +176,15 @@ function App() {
 
   return (
     <div className={lightMode === "light" ? "App lightMode" : "App"}>
-      <button className={`${colorTheme} gridBtn`} onClick={setFour} style={{
-        backgroundColor: rand
-        ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
-          : null,
-      }}>
+      <button
+        className={`${colorTheme} gridBtn`}
+        onClick={setFour}
+        style={{
+          backgroundColor: rand
+            ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
+            : null,
+        }}
+      >
         Play on {grid} Grid
       </button>
       {grid === "3x3" && (
@@ -221,12 +220,8 @@ function App() {
               gameOver={gameOver}
               calculateWinner={calculateWinner}
               rand={rand}
-              // color={rand ? theme[Math.floor(Math.random() * 12)] : color}
               color={color}
-              // color={rand ? `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` : color}
-              // style={{color: (rand ? `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}` : color)}}
-              // color={color}
-            /> 
+            />
           );
         })}
       </div>
@@ -234,11 +229,15 @@ function App() {
         {winner[msg]}
       </span>
       <br />
-      <button onClick={resetHandler} className={colorTheme} style={{
-        backgroundColor: rand
-        ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
-          : null,
-      }}>
+      <button
+        onClick={resetHandler}
+        className={colorTheme}
+        style={{
+          backgroundColor: rand
+            ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
+            : null,
+        }}
+      >
         Reset Grid
       </button>
       <h3 className={lightMode === "light" ? "lightMode" : undefined}>
@@ -253,92 +252,27 @@ function App() {
         }}
         style={{
           backgroundColor: rand
-          ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
+            ? `hsl(${Math.floor(Math.random() * 359)}, 100%, ${lightness}%`
             : null,
         }}
       >
         Reset Wins
       </button>
       <br />
-      <div className="center">
-        <div className={lightMode === "light" ? "aDiv aDivLight" : "aDiv"}>
-          <button
-            className="noStyleBtn"
-            onClick={() => {
-              setColor(theme[a]);
-              setRand(false);
-              localStorage.setItem("color reference", a);
-              localStorage.setItem("rand", false)
-            }}
-          >
-            <span
-              className={lightMode === "light" ? "darkBlueA " : "blueSpan"}
-              onClick={() => {
-                a = lightMode === "light" ? 6 : 0;
-              }}
-            >
-              Ch
-            </span>
-            <span
-              className={lightMode === "light" ? "darkOrangeA" : "orangeA"}
-              onClick={() => {
-                a = lightMode === "light" ? 7 : 1;
-              }}
-            >
-              an
-            </span>
-            <span
-              className={lightMode === "light" ? "purpleA" : "purpleA2"}
-              onClick={() => {
-                a = lightMode === "light" ? 8 : 2;
-              }}
-            >
-              ge
-            </span>
-            <span
-              className={lightMode === "light" ? "darkGreenA " : "greenA"}
-              onClick={() => {
-                a = lightMode === "light" ? 9 : 3;
-              }}
-            >
-              {" "}
-              Co
-            </span>
-            <span
-              className={lightMode === "light" ? "redA" : "redA2"}
-              onClick={() => {
-                a = lightMode === "light" ? 10 : 4;
-              }}
-            >
-              lo
-            </span>
-            <span
-              className={lightMode === "light" ? "darkYellowA " : "yellowA"}
-              onClick={() => {
-                a = lightMode === "light" ? 11 : 5;
-              }}
-            >
-              rs
-            </span>
-          </button>
-        </div>
-      </div>
-      <div>
-        <button
-          className={
-            lightMode === "light"
-              ? "noStyleBtn darkmode"
-              : "noStyleBtn whiteText darkmode"
-          }
-          onClick={() => {
-            colorTheme = theme[Math.floor(Math.random() * 12)]
-            localStorage.setItem("rand", !rand)
-            setRand(!rand);
-          }}
-        >
-          Random Colors
-        </button>
-      </div>
+      <ChangeColorBtn
+        lightMode={lightMode}
+        setColor={setColor}
+        setRand={setRand}
+        theme={theme}
+        a={a}
+      ></ChangeColorBtn>
+      <RandomBtn
+        lightMode={lightMode}
+        colorTheme={colorTheme}
+        theme={theme}
+        rand={rand}
+        setRand={setRand}
+      ></RandomBtn>
       <div>
         <button
           className={
@@ -353,6 +287,12 @@ function App() {
           {lightMode === "light" ? "Dark" : "Light"} Mode
         </button>
       </div>
+      <br />
+      {/* <NavLink to="About">About</NavLink> */}
+      {/* <Routes> */}
+        {/* <Route path="/" element={<App />}></Route> */}
+        {/* <Route path="About" element={<About />}></Route>
+      </Routes> */}
     </div>
   );
 }
