@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import App1 from "./App1";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Analytics } from "@vercel/analytics/react";
 import About from "./About";
@@ -11,8 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <About /> */}
-      <App1 />
+      <Routes>
+        <Route path="/" element={<App />}></Route>
+        <Route path="/About" element={<About />}></Route>
+      </Routes>
     </BrowserRouter>
     <Analytics />
   </React.StrictMode>

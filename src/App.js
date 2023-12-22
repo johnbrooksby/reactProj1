@@ -1,10 +1,9 @@
-import React, { useState, useRef } from "react";
-import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import "./App.css";
 import Square from "./Square";
 import ChangeColorBtn from "./ChangeColorBtn";
 import RandomBtn from "./RandomBtn";
-import About from "./About";
+// import About from "./About";
 
 let xcount = 0;
 let ocount = 0;
@@ -21,12 +20,10 @@ function App() {
     lightMode = "light";
   }
 
-  const navigate = useNavigate();
   const [rand, setRand] = useState(
     localStorage.getItem("rand") === "true" ? true : false
   );
   const [player, setPlayer] = useState(true);
-  const [about, setAbout] = useState(false);
   const [squares, setSquares] = useState(new Array(9).fill(""));
   const [theme] = useState([
     "blue",
@@ -298,7 +295,6 @@ function App() {
       >
         About
       </a> */}
-
     </div>
   );
 }
